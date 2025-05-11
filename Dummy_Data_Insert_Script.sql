@@ -1,0 +1,457 @@
+-- Use the created database
+USE `mydb`;
+
+-- Insert into User table
+INSERT INTO User (user_ID, name, email, phone, role, display_name) VALUES
+(1, 'Alice', 'alice@example.com', '1234567890', 'Guest', 'Alice123'),
+(2, 'Bob', 'bob@example.com', '2345678901', 'Host', 'BobHost'),
+(3, 'Charlie', 'charlie@example.com', '3456789012', 'Guest', 'CharlieC'),
+(4, 'David', 'david@example.com', '4567890123', 'Host', 'DavidH'),
+(5, 'Emma', 'emma@example.com', '5678901234', 'Guest', 'EmmaE'),
+(6, 'Frank', 'frank@example.com', '6789012345', 'Host', 'FrankF'),
+(7, 'Grace', 'grace@example.com', '7890123456', 'Guest', 'GraceG'),
+(8, 'Henry', 'henry@example.com', '8901234567', 'Host', 'HenryH'),
+(9, 'Ivy', 'ivy@example.com', '9012345678', 'Guest', 'IvyI'),
+(10, 'Jack', 'jack@example.com', '1122334455', 'Host', 'JackJ'),
+(11, 'Kate', 'kate@example.com', '2233445566', 'Guest', 'KateK'),
+(12, 'Leo', 'leo@example.com', '3344556677', 'Host', 'LeoL'),
+(13, 'Mona', 'mona@example.com', '4455667788', 'Guest', 'MonaM'),
+(14, 'Nina', 'nina@example.com', '5566778899', 'Host', 'NinaN'),
+(15, 'Oscar', 'oscar@example.com', '6677889900', 'Guest', 'OscarO'),
+(16, 'Paul', 'paul@example.com', '7788990011', 'Host', 'PaulP'),
+(17, 'Quinn', 'quinn@example.com', '8899001122', 'Guest', 'QuinnQ'),
+(18, 'Rachel', 'rachel@example.com', '9900112233', 'Host', 'RachelR'),
+(19, 'Steve', 'steve@example.com', '1011121314', 'Guest', 'SteveS'),
+(20, 'Tom', 'tom@example.com', '1213141516', 'Host', 'TomT'),
+(21, 'Ursula', 'ursula@example.com', '1314151617', 'Host', 'UrsulaU'),
+(22, 'Victor', 'victor@example.com', '1415161718', 'Host', 'VictorV'),
+(23, 'Walter', 'walter@example.com', '1516171819', 'Host', 'WalterW'),
+(24, 'Xena', 'xena@example.com', '1617181920', 'Host', 'XenaA'),
+(25, 'Yvonne', 'yvonne@example.com', '1718192021', 'Host', 'YvonneY'),
+(26, 'Zach', 'zach@example.com', '1819202122', 'Host', 'ZachZ'),
+(27, 'Abby', 'abby@example.com', '1920212223', 'Host', 'AbbyA'),
+(28, 'Brian', 'brian@example.com', '2021222324', 'Host', 'BrianB'),
+(29, 'Cindy', 'cindy@example.com', '2122232425', 'Host', 'CindyC'),
+(30, 'Derek', 'derek@example.com', '2223242526', 'Host', 'DerekD'),
+(31, 'Ethan', 'ethan@example.com', '2324252627', 'Administrator', 'EthanAdmin'),
+(32, 'Sophia', 'sophia@example.com', '2425262728', 'Administrator', 'SophiaAdmin'),
+(33, 'Daniel', 'daniel@example.com', '2526272829', 'Administrator', 'DanielAdmin'),
+(34, 'Isabella', 'isabella@example.com', '2627282930', 'Administrator', 'IsabellaAdmin'),
+(35, 'Michael', 'michael@example.com', '2728293031', 'Administrator', 'MichaelAdmin');
+
+
+-- Insert into Guest table
+INSERT INTO Guest (guest_ID, user_ID, payment_info) VALUES
+(1, 1, 'Visa 1234'),
+(2, 3, 'MasterCard 5678'),
+(3, 5, 'PayPal emma@example.com'),
+(4, 7, 'Visa 9012'),
+(5, 9, 'MasterCard 3456'),
+(6, 11, 'Visa 7890'),
+(7, 13, 'PayPal mona@example.com'),
+(8, 15, 'Visa 1122'),
+(9, 17, 'MasterCard 3344'),
+(10, 19, 'PayPal steve@example.com'),
+(11, 1, 'Visa 5678'),
+(12, 3, 'MasterCard 9012'),
+(13, 5, 'Visa 3456'),
+(14, 7, 'PayPal grace@example.com'),
+(15, 9, 'Visa 7890'),
+(16, 11, 'MasterCard 1122'),
+(17, 13, 'Visa 3344'),
+(18, 15, 'PayPal oscar@example.com'),
+(19, 17, 'MasterCard 5566'),
+(20, 19, 'Visa 7788');
+
+-- Insert into Host table
+INSERT INTO Host (host_ID, user_ID, verification_status, display_name) VALUES
+(1, 2, 'Verified', 'BobHost'),
+(2, 4, 'Pending', 'DavidH'),
+(3, 6, 'Verified', 'FrankF'),
+(4, 8, 'Verified', 'HenryH'),
+(5, 10, 'Pending', 'JackJ'),
+(6, 12, 'Verified', 'LeoL'),
+(7, 14, 'Pending', 'NinaN'),
+(8, 16, 'Verified', 'PaulP'),
+(9, 18, 'Pending', 'RachelR'),
+(10, 20, 'Verified', 'TomT'),
+(11, 21, 'Verified', 'UrsulaU'),
+(12, 22, 'Pending', 'VictorV'),
+(13, 23, 'Verified', 'WalterW'),
+(14, 24, 'Verified', 'XenaA'),
+(15, 25, 'Pending', 'YvonneY'),
+(16, 26, 'Verified', 'ZachZ'),
+(17, 27, 'Pending', 'AbbyA'),
+(18, 28, 'Verified', 'BrianB'),
+(19, 29, 'Pending', 'CindyC'),
+(20, 30, 'Verified', 'DerekD');
+
+-- Insert into Accommodation table
+INSERT INTO Accommodation (accommodation_ID, host_ID, title, description, address, price, availability_status)
+VALUES
+(1, 1, 'Cozy Apartment', 'A small but comfortable apartment in the city center.', '123 Main St, City', 75.00, 'Available'),
+(2, 2, 'Luxury Villa', 'A spacious villa with a pool and great views.', '456 Beach Rd, Coastal Town', 250.00, 'Available'),
+(3, 3, 'Modern Studio', 'Minimalist studio with a balcony and kitchen.', '789 Urban St, Metropolis', 90.00, 'Unavailable'),
+(4, 4, 'Mountain Cabin', 'A peaceful cabin in the woods with a fireplace.', '321 Hilltop Dr, Mountains', 120.00, 'Available'),
+(5, 5, 'Beach House', 'A beachfront property with private access to the ocean.', '555 Ocean Ave, Coastal Town', 300.00, 'Unavailable'),
+(6, 6, 'Downtown Loft', 'A stylish loft in the heart of the city.', '777 Skyline Blvd, Metropolis', 150.00, 'Available'),
+(7, 7, 'Country Cottage', 'A rustic cottage surrounded by nature.', '888 Meadow Ln, Countryside', 80.00, 'Available'),
+(8, 8, 'Penthouse Suite', 'A luxurious penthouse with a rooftop pool.', '999 Highrise Rd, Metropolis', 400.00, 'Unavailable'),
+(9, 9, 'Budget Room', 'A simple and affordable room for travelers.', '101 Budget St, Suburbia', 50.00, 'Available'),
+(10, 10, 'Business Hotel Room', 'A well-equipped hotel room for business travelers.', '202 Corporate Ave, City', 130.00, 'Available'),
+(11, 11, 'Historic Home', 'A beautifully preserved historic house.', '303 Oldtown Rd, Historic District', 180.00, 'Available'),
+(12, 12, 'Farmhouse', 'A quiet farmhouse with beautiful landscapes.', '404 Farm Rd, Countryside', 95.00, 'Unavailable'),
+(13, 13, 'Treehouse Retreat', 'A unique treehouse experience in the forest.', '505 Treehouse Ln, Wilderness', 200.00, 'Available'),
+(14, 14, 'Ski Lodge', 'A cozy lodge near ski slopes.', '606 Snowy Peak, Mountains', 175.00, 'Unavailable'),
+(15, 15, 'Urban Condo', 'A modern condo in a trendy neighborhood.', '707 City Plaza, Metropolis', 160.00, 'Available'),
+(16, 16, 'Desert Getaway', 'A secluded house in the desert with amazing sunsets.', '808 Dune Rd, Desert', 140.00, 'Available'),
+(17, 17, 'Japanese Ryokan', 'A traditional Japanese inn with tatami rooms.', '909 Sakura St, Kyoto', 220.00, 'Unavailable'),
+(18, 18, 'Lakefront Cabin', 'A cabin by the lake with a private dock.', '1010 Lake Rd, Lake District', 190.00, 'Available'),
+(19, 19, 'Tiny House', 'A small but smartly designed tiny home.', '1111 Compact Ln, Suburbia', 85.00, 'Available'),
+(20, 20, 'Bohemian Bungalow', 'A colorful and artsy bungalow near the beach.', '1212 Free Spirit St, Coastal Town', 135.00, 'Available');
+
+-- Insert into Booking table
+INSERT INTO Booking (booking_ID, guest_ID, accommodation_ID, check_in, check_out, status, total_price)
+VALUES
+(1, 1, 5, '2025-03-10', '2025-03-15', 'Confirmed', 1500.00),
+(2, 2, 12, '2025-04-01', '2025-04-07', 'Confirmed', 570.00),
+(3, 3, 8, '2025-05-12', '2025-05-18', 'Pending', 2400.00),
+(4, 4, 1, '2025-06-05', '2025-06-10', 'Confirmed', 375.00),
+(5, 5, 3, '2025-07-20', '2025-07-25', 'Cancelled', 450.00),
+(6, 6, 7, '2025-08-15', '2025-08-18', 'Confirmed', 240.00),
+(7, 7, 10, '2025-09-02', '2025-09-06', 'Confirmed', 520.00),
+(8, 8, 15, '2025-10-10', '2025-10-15', 'Pending', 800.00),
+(9, 9, 6, '2025-11-01', '2025-11-05', 'Confirmed', 600.00),
+(10, 10, 9, '2025-12-22', '2025-12-27', 'Cancelled', 250.00),
+(11, 11, 18, '2026-01-10', '2026-01-20', 'Confirmed', 1900.00),
+(12, 12, 2, '2026-02-05', '2026-02-12', 'Pending', 1750.00),
+(13, 13, 4, '2026-03-01', '2026-03-06', 'Confirmed', 600.00),
+(14, 14, 16, '2026-04-15', '2026-04-20', 'Confirmed', 700.00),
+(15, 15, 11, '2026-05-10', '2026-05-18', 'Cancelled', 1440.00),
+(16, 16, 20, '2026-06-25', '2026-07-01', 'Confirmed', 810.00),
+(17, 17, 17, '2026-07-05', '2026-07-10', 'Pending', 1100.00),
+(18, 18, 19, '2026-08-08', '2026-08-12', 'Confirmed', 340.00),
+(19, 19, 13, '2026-09-12', '2026-09-17', 'Confirmed', 1000.00),
+(20, 20, 14, '2026-10-20', '2026-10-25', 'Pending', 875.00);
+
+-- Insert into Payment table
+INSERT INTO Payment (payment_ID, booking_ID, amount, payment_method, payment_status)
+VALUES
+(1, 1, 1500.00, 'Credit Card', 'Completed'),
+(2, 2, 570.00, 'PayPal', 'Completed'),
+(3, 3, 2400.00, 'Bank Transfer', 'Pending'),
+(4, 4, 375.00, 'Credit Card', 'Completed'),
+(5, 5, 450.00, 'PayPal', 'Failed'),
+(6, 6, 240.00, 'Credit Card', 'Completed'),
+(7, 7, 520.00, 'Bank Transfer', 'Pending'),
+(8, 8, 800.00, 'Credit Card', 'Completed'),
+(9, 9, 600.00, 'PayPal', 'Completed'),
+(10, 10, 250.00, 'Credit Card', 'Failed'),
+(11, 11, 1900.00, 'Bank Transfer', 'Pending'),
+(12, 12, 1750.00, 'Credit Card', 'Completed'),
+(13, 13, 600.00, 'PayPal', 'Completed'),
+(14, 14, 700.00, 'Credit Card', 'Completed'),
+(15, 15, 1440.00, 'Bank Transfer', 'Failed'),
+(16, 16, 810.00, 'Credit Card', 'Completed'),
+(17, 17, 1100.00, 'PayPal', 'Pending'),
+(18, 18, 340.00, 'Credit Card', 'Completed'),
+(19, 19, 1000.00, 'Bank Transfer', 'Completed'),
+(20, 20, 875.00, 'Credit Card', 'Pending');
+
+-- Insert into Review table
+INSERT INTO Review (review_ID, reviewer_ID, reviewed_user_ID, rating, comment, date) VALUES
+(1, 1, 4, 5, 'Great experience, very accommodating!', '2025-03-01'),
+(2, 3, 8, 4, 'Nice place but could be cleaner.', '2025-03-02'),
+(3, 5, 12, 5, 'Fantastic host, very helpful.', '2025-03-03'),
+(4, 7, 10, 3, 'Okay stay, but had some issues.', '2025-03-04'),
+(5, 9, 16, 4, 'Good communication, nice location.', '2025-03-05'),
+(6, 11, 20, 5, 'Perfect stay, would book again.', '2025-03-06'),
+(7, 13, 2, 4, 'Cozy place, friendly host.', '2025-03-07'),
+(8, 15, 6, 5, 'Loved it! Highly recommended.', '2025-03-08'),
+(9, 17, 14, 3, 'Decent, but a few problems.', '2025-03-09'),
+(10, 19, 18, 4, 'Nice amenities, smooth check-in.', '2025-03-10'),
+(11, 1, 21, 5, 'Great host, will book again!', '2025-03-11'),
+(12, 3, 22, 4, 'Lovely place, friendly host.', '2025-03-12'),
+(13, 5, 23, 5, 'Best Airbnb experience so far.', '2025-03-13'),
+(14, 7, 24, 3, 'It was okay, expected more.', '2025-03-14'),
+(15, 9, 25, 4, 'Very responsive and helpful host.', '2025-03-15'),
+(16, 11, 26, 5, 'Superb experience, would return.', '2025-03-16'),
+(17, 13, 27, 3, 'Not bad, but some issues.', '2025-03-17'),
+(18, 15, 28, 4, 'Good host, everything as described.', '2025-03-18'),
+(19, 17, 29, 5, 'Very clean and modern place.', '2025-03-19'),
+(20, 19, 30, 4, 'Enjoyed my stay, would recommend.', '2025-03-20');
+
+-- Insert into Message table
+INSERT INTO Message (message_ID, sender_ID, receiver_ID, content, timestamp) VALUES
+(1, 1, 2, 'Hi, is your place available next weekend?', '2025-03-01 10:15:00'),
+(2, 2, 1, 'Yes, it is! Let me know if you have any questions.', '2025-03-01 10:20:00'),
+(3, 3, 6, 'Can I check in earlier?', '2025-03-02 08:30:00'),
+(4, 6, 3, 'I can accommodate an early check-in at 1 PM.', '2025-03-02 08:45:00'),
+(5, 5, 10, 'Are pets allowed?', '2025-03-03 12:00:00'),
+(6, 10, 5, 'Yes, pets are welcome!', '2025-03-03 12:10:00'),
+(7, 7, 14, 'What is the WiFi speed in your apartment?', '2025-03-04 15:20:00'),
+(8, 14, 7, 'It is 100 Mbps, perfect for remote work.', '2025-03-04 15:30:00'),
+(9, 9, 16, 'Can I extend my stay for two more nights?', '2025-03-05 17:40:00'),
+(10, 16, 9, 'Sure, I will update your booking.', '2025-03-05 17:50:00'),
+(11, 11, 20, 'Is there a parking space available?', '2025-03-06 09:05:00'),
+(12, 20, 11, 'Yes, we have free parking on-site.', '2025-03-06 09:15:00'),
+(13, 13, 22, 'Can I get a discount for a longer stay?', '2025-03-07 14:25:00'),
+(14, 22, 13, 'For stays longer than a week, I offer 10% off.', '2025-03-07 14:35:00'),
+(15, 15, 24, 'What’s the best way to reach your place from the airport?', '2025-03-08 18:00:00'),
+(16, 24, 15, 'I recommend taking the train, it’s fast and convenient.', '2025-03-08 18:10:00'),
+(17, 17, 26, 'Do you have a washing machine?', '2025-03-09 11:50:00'),
+(18, 26, 17, 'Yes, the apartment includes a washing machine.', '2025-03-09 12:00:00'),
+(19, 19, 28, 'How far is the nearest grocery store?', '2025-03-10 13:40:00'),
+(20, 28, 19, 'Just a 5-minute walk from the apartment.', '2025-03-10 13:50:00');
+
+-- Insert into Administrator table
+INSERT INTO Administrator (admin_ID, user_ID, role_description) VALUES
+(1, 31, 'Super Admin - Full access to the platform'),
+(2, 32, 'Support Admin - Handles user queries and complaints'),
+(3, 33, 'Content Moderator - Manages listings and reviews'),
+(4, 34, 'Technical Admin - Maintains system security and database'),
+(5, 35, 'Finance Admin - Oversees payment processing and refunds');
+
+-- Insert into Amenity table
+INSERT INTO Amenity (amenity_ID, name, description) VALUES
+(1, 'WiFi', 'High-speed wireless internet'),
+(2, 'Parking', 'Free on-site parking available'),
+(3, 'Swimming Pool', 'Outdoor swimming pool'),
+(4, 'Gym', 'Fully equipped fitness center'),
+(5, 'Air Conditioning', 'Cooling and heating system'),
+(6, 'Kitchen', 'Fully equipped kitchen with appliances'),
+(7, 'Washer', 'Laundry washing machine available'),
+(8, 'TV', 'Smart TV with streaming services'),
+(9, 'Pet Friendly', 'Pets allowed'),
+(10, 'Breakfast', 'Complimentary breakfast included'),
+(11, 'Hot Tub', 'Outdoor hot tub for relaxation'),
+(12, 'Elevator', 'Accessible elevator available'),
+(13, 'Fireplace', 'Indoor fireplace for a cozy atmosphere'),
+(14, 'Jacuzzi', 'Private jacuzzi in selected rooms'),
+(15, 'Bar', 'On-site bar with a wide selection of drinks'),
+(16, 'Luggage Storage', 'Secure luggage storage available'),
+(17, 'Sauna', 'Relaxing sauna available for guests'),
+(18, 'Conference Room', 'Fully equipped conference room for meetings'),
+(19, 'Spa', 'Full-service spa with massages and treatments'),
+(20, 'Garden', 'Beautiful outdoor garden for guests');
+
+-- Inserting accommodation-amenity relationships
+INSERT INTO Accommodation_Amenity (accommodation_ID, amenity_ID) VALUES
+(1, 1), (1, 2), (1, 5), (2, 3), (2, 6), (3, 4), (3, 8),
+(4, 1), (4, 9), (5, 7), (5, 10), (6, 2), (6, 5), (7, 3),
+(8, 6), (8, 7), (9, 1), (9, 8), (10, 2), (10, 4),
+(11, 9), (11, 10), (12, 1), (12, 6), (13, 5), (13, 8),
+(14, 7), (14, 10), (15, 2), (15, 3), (16, 4), (16, 9),
+(17, 1), (17, 5), (18, 3), (18, 6), (19, 2), (19, 8),
+(20, 7), (20, 10);
+
+-- Insert into Commission table
+INSERT INTO Commission (commission_ID, host_ID, booking_ID, commission_percentage, commission_amount) VALUES
+(1, 1, 1, 10, 150.00),  
+(2, 2, 2, 12, 68.40), 
+(3, 3, 3, 15, 360.00),  
+(4, 4, 4, 10, 37.50),   
+(5, 5, 5, 8, 36.00),    
+(6, 6, 6, 12, 28.80),   
+(7, 7, 7, 14, 72.80),   
+(8, 8, 8, 10, 80.00),   
+(9, 9, 9, 11, 66.00),   
+(10, 10, 10, 9, 22.50), 
+(11, 11, 11, 10, 190.00), 
+(12, 12, 12, 15, 262.50), 
+(13, 13, 13, 12, 72.00),  
+(14, 14, 14, 10, 70.00),  
+(15, 15, 15, 13, 187.20), 
+(16, 16, 16, 10, 81.00),  
+(17, 17, 17, 11, 121.00), 
+(18, 18, 18, 14, 47.60),
+(19, 19, 19, 9, 90.00),   
+(20, 20, 20, 12, 105.00); 
+
+-- Insert into Country table
+INSERT INTO Country (country_ID, name) VALUES
+(1, 'United States'),
+(2, 'France'),
+(3, 'Japan'),
+(4, 'Germany'),
+(5, 'United Kingdom'),
+(6, 'Canada'),
+(7, 'Australia'),
+(8, 'Italy'),
+(9, 'Spain'),
+(10, 'Brazil'),
+(11, 'Netherlands'),
+(12, 'China'),
+(13, 'Mexico'),
+(14, 'South Korea'),
+(15, 'India'),
+(16, 'Sweden'),
+(17, 'Switzerland'),
+(18, 'Russia'),
+(19, 'Argentina'),
+(20, 'South Africa');
+
+-- Insert into Availability table
+INSERT INTO Availability (availability_ID, accommodation_ID, date, status) VALUES
+(1, 1, '2025-03-07', 'Available'),         
+(2, 2, '2025-03-08', 'Available'),         
+(3, 3, '2025-03-09', 'Unavailable'),       
+(4, 4, '2025-03-10', 'Available'),         
+(5, 5, '2025-03-11', 'Unavailable'),       
+(6, 6, '2025-03-12', 'Available'),       
+(7, 7, '2025-03-13', 'Available'),         
+(8, 8, '2025-03-14', 'Unavailable'),     
+(9, 9, '2025-03-15', 'Available'),         
+(10, 10, '2025-03-16', 'Available'),    
+(11, 11, '2025-03-17', 'Available'),       
+(12, 12, '2025-03-18', 'Unavailable'),     
+(13, 13, '2025-03-19', 'Available'),       
+(14, 14, '2025-03-20', 'Unavailable'),     
+(15, 15, '2025-03-21', 'Available'),       
+(16, 16, '2025-03-22', 'Available'),       
+(17, 17, '2025-03-23', 'Unavailable'),     
+(18, 18, '2025-03-24', 'Available'),       
+(19, 19, '2025-03-25', 'Available'),       
+(20, 20, '2025-03-26', 'Available');       
+
+-- Insert into Dispute table
+INSERT INTO Dispute (dispute_ID, user_ID, booking_ID, description, status) VALUES
+(1, 1, 1, 'Guest was charged twice for the booking.', 'Resolved'),
+(2, 3, 2, 'Host did not provide the agreed amenities.', 'Open'),
+(3, 5, 3, 'Guest left the accommodation in poor condition.', 'Open'),
+(4, 7, 4, 'Payment issue with refund request.', 'Resolved'),
+(5, 9, 5, 'Booking was canceled without notification.', 'Open'),
+(6, 11, 6, 'Guest reported unclean accommodation.', 'Open'),
+(7, 13, 7, 'Host was unresponsive to inquiries.', 'Resolved'),
+(8, 15, 8, 'Payment method was declined multiple times.', 'Open'),
+(9, 17, 9, 'Check-in process was delayed significantly.', 'Open'),
+(10, 19, 10, 'Unexpected extra fees charged.', 'Resolved'),
+(11, 1, 11, 'Dispute over security deposit refund.', 'Open'),
+(12, 3, 12, 'Guest violated house rules.', 'Open'),
+(13, 5, 13, 'Host misrepresented property description.', 'Resolved'),
+(14, 7, 14, 'Cancellation policy was unclear.', 'Open'),
+(15, 9, 15, 'Guest demanded refund without reason.', 'Open'),
+(16, 11, 16, 'Dispute over cleaning fee charges.', 'Resolved'),
+(17, 13, 17, 'Booking was mistakenly duplicated.', 'Open'),
+(18, 15, 18, 'Accommodation photos were misleading.', 'Open'),
+(19, 17, 19, 'Host refused to issue refund.', 'Resolved'),
+(20, 19, 20, 'Payment verification issue.', 'Open');
+
+
+
+-- Insert into City table
+INSERT INTO City (city_ID, name, country_ID) VALUES
+(1, 'Paris', 2),           
+(2, 'New York', 1),      
+(3, 'Tokyo', 3),        
+(4, 'London', 5),          
+(5, 'Berlin', 4),      
+(6, 'Sydney', 7),          
+(7, 'Toronto', 6),         
+(8, 'Barcelona', 9),     
+(9, 'Amsterdam', 11),     
+(10, 'Rome', 8),           
+(11, 'São Paulo', 10),     
+(12, 'Shanghai', 12),      
+(13, 'Mexico City', 13),  
+(14, 'Seoul', 14),         
+(15, 'Mumbai', 15),        
+(16, 'Stockholm', 16),    
+(17, 'Zurich', 17),        
+(18, 'Moscow', 18),       
+(19, 'Buenos Aires', 19), 
+(20, 'Cape Town', 20);     
+
+-- Insert into Discount table
+INSERT INTO Discount (discount_ID, booking_ID, payment_ID, discount_percentage, expiration_date) VALUES
+(1, 1, 1, 10, '2025-06-30'),
+(2, 2, 2, 15, '2025-11-15'),
+(3, 3, 3, 5, '2025-08-22'),
+(4, 4, 4, 20, '2025-10-10'),
+(5, 5, 5, 10, '2025-07-05'),
+(6, 6, 6, 12, '2025-09-12'),
+(7, 7, 7, 8, '2025-12-01'),
+(8, 8, 8, 18, '2025-05-25'),
+(9, 9, 9, 7, '2025-06-15'),
+(10, 10, 10, 13, '2025-10-30'),
+(11, 11, 11, 9, '2025-08-10'),
+(12, 12, 12, 16, '2025-12-20'),
+(13, 13, 13, 5, '2025-07-17'),
+(14, 14, 14, 14, '2025-09-25'),
+(15, 15, 15, 11, '2025-11-05'),
+(16, 16, 16, 10, '2025-12-10'),
+(17, 17, 17, 20, '2025-06-05'),
+(18, 18, 18, 12, '2025-09-30'),
+(19, 19, 19, 8, '2025-08-18'),
+(20, 20, 20, 14, '2025-07-12');
+
+-- Insert into Complaint table
+INSERT INTO Complaint (complaint_ID, user_ID, target_ID, description, status, date_filed) VALUES
+(1, 1, 5, 'Noise complaints during the night.', 'Open', '2025-03-01'),
+(2, 2, 6, 'Property was not as described.', 'Resolved', '2025-02-20'),
+(3, 3, 7, 'Host was unresponsive to issues.', 'Open', '2025-02-28'),
+(4, 4, 8, 'Unauthorized extra charges.', 'Open', '2025-03-05'),
+(5, 5, 9, 'Room was not clean on arrival.', 'Resolved', '2025-03-02'),
+(6, 6, 10, 'Air conditioning did not work.', 'Open', '2025-03-07'),
+(7, 7, 11, 'Host canceled last minute.', 'Rejected', '2025-02-25'),
+(8, 8, 12, 'WiFi was not available as listed.', 'Resolved', '2025-02-22'),
+(9, 9, 13, 'Booking was double-booked.', 'Open', '2025-02-27'),
+(10, 10, 14, 'Safety concerns with the location.', 'Open', '2025-03-04'),
+(11, 11, 15, 'Hidden fees in final bill.', 'Rejected', '2025-02-18'),
+(12, 12, 16, 'Check-in process was confusing.', 'Resolved', '2025-02-24'),
+(13, 13, 17, 'Bathroom had plumbing issues.', 'Open', '2025-02-21'),
+(14, 14, 18, 'Host was rude and unhelpful.', 'Rejected', '2025-02-26'),
+(15, 15, 19, 'Heating did not work in winter.', 'Open', '2025-03-03'),
+(16, 16, 20, 'Security deposit was not refunded.', 'Open', '2025-02-28'),
+(17, 17, 1, 'Noisy neighbors ruined the stay.', 'Resolved', '2025-02-23'),
+(18, 18, 2, 'Unclear house rules caused issues.', 'Open', '2025-01-15'),
+(19, 19, 3, 'Bedbugs found in the room.', 'Rejected', '2025-03-06'),
+(20, 20, 4, 'Misleading listing photos.', 'Resolved', '2025-03-01');
+
+
+-- Insert into Blacklist table
+INSERT INTO Blacklist (blacklist_ID, user_ID, reason, date_added) VALUES
+(1, 3, 'Repeated cancellations without notice', '2025-01-05'),
+(2, 7, 'Fraudulent payment attempts', '2025-01-12'),
+(3, 10, 'Harassing other users', '2025-01-20'),
+(4, 14, 'Property damage reported by multiple hosts', '2025-01-25'),
+(5, 6, 'Fake reviews and ratings', '2025-02-01'),
+(6, 9, 'Violating house rules multiple times', '2025-02-08'),
+(7, 13, 'Threatening messages to host', '2025-02-15'),
+(8, 15, 'Illegal activities reported', '2025-02-22'),
+(9, 2, 'Creating multiple fraudulent accounts', '2025-03-01'),
+(10, 17, 'Attempting chargebacks after staying', '2025-03-05'),
+(11, 5, 'Repeatedly failing to pay for bookings', '2025-03-10'),
+(12, 8, 'Host reported for unauthorized surveillance', '2025-03-12'),
+(13, 4, 'Attempting to scam hosts for refunds', '2025-03-15'),
+(14, 12, 'Hosting illegal parties in rentals', '2025-03-18'),
+(15, 20, 'Using stolen credit cards for bookings', '2025-03-21'),
+(16, 18, 'Multiple guest complaints about aggressive behavior', '2025-03-23'),
+(17, 11, 'Refusing to vacate after stay ended', '2025-03-25'),
+(18, 16, 'Submitting false damage claims', '2025-03-28'),
+(19, 1, 'Threatening support staff', '2025-03-30'),
+(20, 19, 'Creating fake accommodation listings', '2025-04-01');
+
+-- Insert into Support_Ticket table
+INSERT INTO Support_Ticket (ticket_ID, user_ID, subject, status, created_at) VALUES
+(1, 3, 'Issue with booking cancellation', 'Open', '2025-01-05'),
+(2, 5, 'Host not responding to messages', 'Resolved', '2025-01-10'),
+(3, 8, 'Refund request for cancelled stay', 'Open', '2025-01-12'),
+(4, 12, 'Payment method not working', 'Open', '2025-01-15'),
+(5, 7, 'Host charged extra fees on arrival', 'Closed', '2025-01-20'),
+(6, 11, 'Unable to verify account', 'Resolved', '2025-01-22'),
+(7, 2, 'Dispute over security deposit deduction', 'Open', '2025-01-25'),
+(8, 14, 'Unauthorized listing of my property', 'Open', '2025-02-01'),
+(9, 4, 'Trouble accessing booking history', 'Closed', '2025-02-05'),
+(10, 16, 'Account suspended without explanation', 'Resolved', '2025-02-08'),
+(11, 9, 'Complaint about rude customer support', 'Open', '2025-02-12'),
+(12, 19, 'Cannot leave a review after stay', 'Open', '2025-02-15'),
+(13, 6, 'Error in total price calculation', 'Closed', '2025-02-20'),
+(14, 17, 'Refund taking too long to process', 'Open', '2025-02-25'),
+(15, 1, 'Account hacked, need urgent help', 'Resolved', '2025-03-01'),
+(16, 10, 'Host cancelled last minute, need compensation', 'Open', '2025-03-05'),
+(17, 18, 'Discount code not applying at checkout', 'Closed', '2025-03-10'),
+(18, 15, 'Host added unexpected cleaning fee', 'Open', '2025-03-15'),
+(19, 13, 'Duplicate bookings appeared in my account', 'Resolved', '2025-03-20'),
+(20, 20, 'My property listing was removed without reason', 'Open', '2025-03-25');
+
